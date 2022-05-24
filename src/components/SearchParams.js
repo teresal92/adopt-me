@@ -5,7 +5,7 @@ import ThemeContext from "../context/ThemeContext";
 import useBreedList from "../hooks/useBreedList";
 
 const ANIMALS = ["bird", "cat", "dog", "rabbit"];
-const THEMES = ["#f6c453", "#fefbe9", "#f0a04b", "#183a1d", "#e1eedd"]
+const THEMES = ["#183a1d", "#f6c453", "#fefbe9", "#f0a04b", "#e1eedd"]
 
 const SearchParams = () => {
   const [location, setLocation] = useState("");

@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/teresal92/adopt-me#readme",
   "devDependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.16.7",
     "eslint": "^8.8.0",
     "eslint-config-prettier": "^8.3.0",
     "parcel": "^2.2.1",

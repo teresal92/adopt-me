@@ -1,9 +1,9 @@
 import { Component } from "react";
 import { useParams } from "react-router-dom";
+import { connect } from "react-redux";
 
 import Carousel from "./Carousel";
 import Modal from "./Modal";
-import ThemeContext from "../context/ThemeContext";
 import ErrorBoundary from "../hooks/ErrorBoundary";
 
 class Details extends Component {
@@ -32,13 +32,9 @@ class Details extends Component {
         <div>
           <h1>{name}</h1>
           <h2>{`${animal} – ${breed} – ${city}, ${state}`}</h2>
-          <ThemeContext.Consumer>
-            {([theme]) => (
-              <button onClick={this.toggleModal} style={{ backgroundColor: theme }}>
-                Adopt {name}
-              </button>
-            )}
-          </ThemeContext.Consumer>
+          <button onClick={this.toggleModal} style={{ backgroundColor: this.props.theme }}>
+            Adopt {name}
+          </button>
           <p>{description}</p>
           {
             showModal ? (
@@ -59,11 +55,14 @@ class Details extends Component {
   }
 }
 
+const mapStateToProps = ({ theme }) => ({ theme });
+const ReduxWrappedDetails = connect(mapStateToProps)(Details);
+
 const WrappedDetails = () => {
   const params = useParams();
   return (
     <ErrorBoundary>
-      <Details params={params} />
+      <ReduxWrappedDetails params={params} />
     </ErrorBoundary>
   );
 };

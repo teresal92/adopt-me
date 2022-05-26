@@ -1,16 +1,13 @@
-import { useState } from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
-
-import ThemeContext from "../context/ThemeContext";
 import WrappedDetails from "./Details";
 import SearchParams from "./SearchParams";
+import { Provider } from "react-redux";
+import store from "../store";
 
 const App = () => {
-  const theme = useState("darkblue");
-
   return (
-    <ThemeContext.Provider value={theme}>
+    <Provider store={store}>
       <BrowserRouter>
         <header>
           <Link to="/">Adopt Me!</Link>
@@ -20,7 +17,7 @@ const App = () => {
           <Route path="/" element={<SearchParams />} />
         </Routes>
       </BrowserRouter>
-    </ThemeContext.Provider>
+    </Provider>
   );
 };
 
